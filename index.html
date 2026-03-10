@@ -5,8 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Articulate Ape Studios | Next-Gen Interactive</title>
     <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
-    
-   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
@@ -27,6 +26,11 @@
     </header>
 
     <section class="hero">
+        <video autoplay loop muted playsinline class="hero-video">
+            <source src="assets/background.mp4" type="video/mp4">
+        </video>
+        <div class="video-overlay"></div>
+
         <h1>EVOLVE<br>THE GAME</h1>
         <p>Crafting intelligent, brutal, and breathtaking interactive experiences for the next generation of hardware.</p>
         <button class="cta-btn">View Latest Trailer</button>
@@ -84,7 +88,7 @@
             <div class="footer-links">
                 <div class="link-group">
                     <h4>Comm Link</h4>
-                    <a href="mailto:hello@articulateape.com">jonjonglopez@gmail.com</a>
+                    <a href="mailto:jonjonglopez@gmail.com">jonjonglopez@gmail.com</a>
                 </div>
                 <div class="link-group">
                     <h4>Network</h4>
@@ -95,6 +99,10 @@
             </div>
         </div>
     </div>
+
+    <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
+    
+    <script src="js/main.js"></script>
 
 </body>
 </html>
