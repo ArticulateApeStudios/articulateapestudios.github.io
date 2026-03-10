@@ -1,5 +1,5 @@
 
- <style>
+
         /* --- Advanced CSS Variables --- */
         :root {
             --bg-deep: #050507;
@@ -211,4 +211,4 @@
             .bento-grid { grid-template-columns: 1fr; }
             .item-large, .item-wide { grid-column: span 1; }
         }
-    </style>
+
