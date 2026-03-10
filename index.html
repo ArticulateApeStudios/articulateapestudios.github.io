@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Articulate Ape Studios</title>
+    <style>
+        /* Global Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #121212;
+            color: #e0e0e0;
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3 {
+            color: #ffffff;
+            font-weight: 600;
+        }
+
+        a {
+            color: #00e6b8; /* Mint green accent color */
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        a:hover {
+            color: #ffffff;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: #1a1a1a;
+            padding: 20px 5%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 2px solid #00e6b8;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+            color: #ffffff;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 30px;
+            margin: 0;
+            padding: 0;
+        }
+
+        nav a {
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1px;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 10px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0a0a0;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Projects Section */
+        .project-section {
+            margin-bottom: 80px;
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        }
+
+        .project-header {
+            margin-bottom: 20px;
+            border-bottom: 1px solid #333;
+            padding-bottom: 10px;
+        }
+
+        /* 3x3 Image Grid */
+        .image-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 15px;
+        }
+
+        .img-placeholder {
+            background-color: #262626;
+            aspect-ratio: 16 / 9;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+            border: 1px dashed #444;
+            border-radius: 4px;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+        }
+
+        .img-placeholder:hover {
+            transform: scale(1.02);
+            background-color: #333;
+            border-color: #00e6b8;
+            cursor: pointer;
+        }
+
+        /* Contact Section */
+        .contact-section {
+            background-color: #1a1a1a;
+            padding: 40px;
+            border-radius: 8px;
+            border-left: 5px solid #00e6b8;
+        }
+
+        .contact-info {
+            font-size: 1.1rem;
+            margin-top: 20px;
+        }
+
+        .contact-info p {
+            margin: 10px 0;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 30px;
+            background-color: #1a1a1a;
+            color: #666;
+            font-size: 0.9rem;
+            border-top: 1px solid #333;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .image-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            nav ul {
+                display: none; /* Simplified for mobile - can add a hamburger menu later */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .image-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo">Articulate Ape Studios</div>
+        <nav>
+            <ul>
+                <li><a href="#about">About</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="container">
+        <section class="hero" id="about">
+            <h1>Evolving the Game.</h1>
+            <p>Welcome to Articulate Ape Studios. We craft intelligent, engaging, and unforgettable interactive experiences.</p>
+        </section>
+
+        <section id="projects">
+            
+            <div class="project-section">
+                <div class="project-header">
+                    <h2>[Project Name 1]</h2>
+                    <p>[Brief description of the game, genre, or current development status]</p>
+                </div>
+                <div class="image-grid">
+                    <div class="img-placeholder">Image 1 Placeholder</div>
+                    <div class="img-placeholder">Image 2 Placeholder</div>
+                    <div class="img-placeholder">Image 3 Placeholder</div>
+                    <div class="img-placeholder">Image 4 Placeholder</div>
+                    <div class="img-placeholder">Image 5 Placeholder</div>
+                    <div class="img-placeholder">Image 6 Placeholder</div>
+                    <div class="img-placeholder">Image 7 Placeholder</div>
+                    <div class="img-placeholder">Image 8 Placeholder</div>
+                    <div class="img-placeholder">Image 9 Placeholder</div>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <div class="project-header">
+                    <h2>[Project Name 2]</h2>
+                    <p>[Brief description of the game, genre, or current development status]</p>
+                </div>
+                <div class="image-grid">
+                    <div class="img-placeholder">Image 1 Placeholder</div>
+                    <div class="img-placeholder">Image 2 Placeholder</div>
+                    <div class="img-placeholder">Image 3 Placeholder</div>
+                    <div class="img-placeholder">Image 4 Placeholder</div>
+                    <div class="img-placeholder">Image 5 Placeholder</div>
+                    <div class="img-placeholder">Image 6 Placeholder</div>
+                    <div class="img-placeholder">Image 7 Placeholder</div>
+                    <div class="img-placeholder">Image 8 Placeholder</div>
+                    <div class="img-placeholder">Image 9 Placeholder</div>
+                </div>
+            </div>
+
+            <div class="project-section">
+                <div class="project-header">
+                    <h2>[Project Name 3]</h2>
+                    <p>[Brief description of the game, genre, or current development status]</p>
+                </div>
+                <div class="image-grid">
+                    <div class="img-placeholder">Image 1 Placeholder</div>
+                    <div class="img-placeholder">Image 2 Placeholder</div>
+                    <div class="img-placeholder">Image 3 Placeholder</div>
+                    <div class="img-placeholder">Image 4 Placeholder</div>
+                    <div class="img-placeholder">Image 5 Placeholder</div>
+                    <div class="img-placeholder">Image 6 Placeholder</div>
+                    <div class="img-placeholder">Image 7 Placeholder</div>
+                    <div class="img-placeholder">Image 8 Placeholder</div>
+                    <div class="img-placeholder">Image 9 Placeholder</div>
+                </div>
+            </div>
+
+        </section>
+
+        <section class="contact-section" id="contact">
+            <h2>Get In Touch</h2>
+            <p>Interested in collaborating, covering our games, or just want to say hi?</p>
+            
+            <div class="contact-info">
+                <p><strong>Name:</strong> [Your Name / Studio Lead]</p>
+                <p><strong>Email:</strong> <a href="mailto:[Your Email]">[Your Email Address]</a></p>
+                <p><strong>Phone:</strong> [Your Phone Number - Optional]</p>
+                <p><strong>Social:</strong> 
+                    <a href="[Link]">[Twitter/X]</a> | 
+                    <a href="[Link]">[LinkedIn]</a> | 
+                    <a href="[Link]">[Discord/Other]</a>
+                </p>
+                <p><strong>Location:</strong> [City, State, or "Remote"]</p>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        &copy; 2026 Articulate Ape Studios. All rights reserved.
+    </footer>
+
+</body>
+</html>
