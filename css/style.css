@@ -246,3 +246,28 @@
             .bento-grid { grid-template-columns: 1fr; }
             .item-large, .item-wide { grid-column: span 1; }
         }
+/* --- Custom Glowing Cursor --- */
+        .cursor-glow {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 40px;
+            height: 40px;
+            background: var(--accent-primary);
+            border-radius: 50%;
+            pointer-events: none; /* CRUCIAL: Ensures the glow doesn't block you from clicking buttons */
+            transform: translate(-50%, -50%); /* Centers the glow exactly on the mouse tip */
+            z-index: 9999;
+            filter: blur(20px); /* Gives it that soft, radioactive neon look */
+            opacity: 0.6;
+            transition: width 0.3s ease, height 0.3s ease, background 0.3s ease;
+            will-change: transform; /* Tells the browser to optimize this for high framerates */
+        }
+
+        /* The expanded state when hovering over a link or button */
+        .cursor-glow.hover-active {
+            width: 80px;
+            height: 80px;
+            background: var(--accent-secondary);
+            opacity: 0.8;
+        }
