@@ -3,382 +3,312 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Articulate Ape Studios</title>
-    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <title>Articulate Ape Studios | Next-Gen Interactive</title>
+    <link href="https://fonts.googleapis.com/css2?family=Syncopate:wght@400;700&family=Outfit:wght@300;500;800&display=swap" rel="stylesheet">
     
     <style>
-        /* --- CSS Variables for Easy Theming --- */
+        /* --- Advanced CSS Variables --- */
         :root {
-            --bg-color: #0a0a0c;
-            --text-main: #f0f0f0;
-            --text-muted: #8892b0;
-            --accent: #00e6b8;
-            --accent-glow: rgba(0, 230, 184, 0.4);
-            --card-bg: rgba(255, 255, 255, 0.03);
+            --bg-deep: #050507;
+            --bg-surface: rgba(255, 255, 255, 0.02);
+            --text-main: #f4f4f5;
+            --text-muted: #a1a1aa;
+            --accent-primary: #00ffa3;
+            --accent-secondary: #7000ff;
+            --glow-primary: rgba(0, 255, 163, 0.4);
+            --glow-secondary: rgba(112, 0, 255, 0.4);
+            --border-subtle: rgba(255, 255, 255, 0.05);
         }
 
-        /* --- Global Styles --- */
-        html {
-            scroll-behavior: smooth;
-        }
+        /* --- Custom Scrollbar & Selection --- */
+        ::-webkit-scrollbar { width: 10px; }
+        ::-webkit-scrollbar-track { background: var(--bg-deep); }
+        ::-webkit-scrollbar-thumb { background: #333; border-radius: 5px; }
+        ::-webkit-scrollbar-thumb:hover { background: var(--accent-primary); }
+        ::selection { background: var(--accent-primary); color: #000; }
 
+        /* --- Global Resets & Base --- */
+        html { scroll-behavior: smooth; }
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--bg-color);
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-deep);
             color: var(--text-main);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+            margin: 0; padding: 0;
             overflow-x: hidden;
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(112, 0, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(0, 255, 163, 0.05), transparent 25%);
         }
 
-        h1, h2, h3, .logo {
-            font-family: 'Orbitron', sans-serif;
-            text-transform: uppercase;
+        h1, h2, h3, .logo, .nav-link { font-family: 'Syncopate', sans-serif; text-transform: uppercase; }
+        a { text-decoration: none; color: inherit; }
+
+        /* --- CRT Scanline Overlay (Pointer-events: none ensures it doesn't block clicks) --- */
+        .scanlines {
+            position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+            background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%);
+            background-size: 100% 4px; z-index: 9999; pointer-events: none; opacity: 0.4;
         }
 
-        a {
-            color: var(--accent);
-            text-decoration: none;
-            transition: all 0.3s ease;
-        }
-
-        /* --- Animations --- */
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes pulseGlow {
-            0% { text-shadow: 0 0 10px var(--accent-glow); }
-            50% { text-shadow: 0 0 25px var(--accent), 0 0 35px var(--accent); }
-            100% { text-shadow: 0 0 10px var(--accent-glow); }
-        }
-
-        /* --- Header & Navigation (Glassmorphism) --- */
+        /* --- Header & Glass Navigation --- */
         header {
-            background: rgba(10, 10, 12, 0.7);
-            backdrop-filter: blur(10px);
-            padding: 20px 5%;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            box-sizing: border-box;
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(5, 5, 7, 0.6); backdrop-filter: blur(12px);
+            border-bottom: 1px solid var(--border-subtle);
+            padding: 20px 0; transition: all 0.3s ease;
         }
 
-        .logo {
-            font-size: 1.5rem;
-            font-weight: 900;
-            letter-spacing: 2px;
-            color: #ffffff;
-            text-shadow: 0 0 10px var(--accent-glow);
+        .header-content {
+            display: flex; justify-content: space-between; align-items: center;
+            max-width: 1600px; margin: 0 auto; padding: 0 40px;
         }
 
-        .logo span {
-            color: var(--accent);
-        }
+        .logo { font-size: 1.2rem; font-weight: 700; letter-spacing: 3px; }
+        .logo span { color: var(--accent-primary); }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 40px;
-            margin: 0;
-            padding: 0;
+        nav ul { display: flex; gap: 40px; list-style: none; margin: 0; padding: 0; }
+        .nav-link {
+            font-size: 0.75rem; letter-spacing: 2px; color: var(--text-muted);
+            transition: color 0.3s ease; position: relative;
         }
-
-        nav a {
-            font-size: 0.85rem;
-            font-weight: 600;
-            letter-spacing: 2px;
-            color: var(--text-main);
-            position: relative;
+        .nav-link:hover { color: var(--text-main); }
+        .nav-link::before {
+            content: ''; position: absolute; bottom: -8px; left: 0;
+            width: 0%; height: 2px; background: var(--accent-primary);
+            transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
         }
+        .nav-link:hover::before { width: 100%; }
 
-        nav a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -5px;
-            left: 0;
-            background-color: var(--accent);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        /* --- Hero Section --- */
+        /* --- Hero Section with Animated Gradient Text --- */
         .hero {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            background: radial-gradient(circle at center, rgba(0,230,184,0.1) 0%, var(--bg-color) 70%);
-            padding: 0 20px;
-            animation: fadeInDown 1.2s ease-out;
+            height: 100vh; display: flex; flex-direction: column;
+            justify-content: center; align-items: center; text-align: center;
+            position: relative; padding: 0 20px;
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 6vw, 5rem);
-            margin-bottom: 20px;
-            animation: pulseGlow 4s infinite;
+            font-size: clamp(3rem, 8vw, 7rem); margin: 0; line-height: 1.1;
+            /* Advanced CSS: Animated Gradient Text */
+            background: linear-gradient(to right, var(--text-main), var(--accent-primary), var(--accent-secondary), var(--text-main));
+            background-size: 300% auto;
+            color: transparent;
+            -webkit-background-clip: text; background-clip: text;
+            animation: gradientText 8s linear infinite;
+        }
+
+        @keyframes gradientText {
+            0% { background-position: 0% center; }
+            100% { background-position: 300% center; }
         }
 
         .hero p {
-            font-size: 1.2rem;
-            color: var(--text-muted);
-            max-width: 600px;
-            margin-bottom: 40px;
+            font-size: 1.2rem; color: var(--text-muted); font-weight: 300;
+            max-width: 600px; margin: 30px auto; letter-spacing: 1px;
         }
 
-        .btn {
-            padding: 15px 40px;
-            font-family: 'Orbitron', sans-serif;
-            font-weight: 700;
-            letter-spacing: 2px;
-            color: var(--bg-color);
-            background-color: var(--accent);
-            border: 2px solid var(--accent);
-            border-radius: 4px;
-            text-transform: uppercase;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 15px var(--accent-glow);
+        .cta-btn {
+            padding: 18px 45px; font-family: 'Syncopate', sans-serif; font-size: 0.8rem;
+            font-weight: 700; letter-spacing: 3px; color: #000;
+            background: var(--accent-primary); border: none; border-radius: 2px;
+            cursor: pointer; position: relative; overflow: hidden;
+            box-shadow: 0 0 20px var(--glow-primary); transition: all 0.3s ease;
+        }
+        .cta-btn:hover {
+            transform: scale(1.05); box-shadow: 0 0 40px var(--glow-primary);
+            background: #fff;
         }
 
-        .btn:hover {
-            background-color: transparent;
-            color: var(--accent);
-            box-shadow: 0 0 30px var(--accent-glow) inset, 0 0 30px var(--accent-glow);
+        /* --- Infinite CSS Marquee --- */
+        .marquee-container {
+            width: 100%; overflow: hidden; background: var(--bg-surface);
+            border-top: 1px solid var(--border-subtle); border-bottom: 1px solid var(--border-subtle);
+            padding: 20px 0; position: relative; display: flex;
+        }
+        .marquee-content {
+            display: flex; white-space: nowrap;
+            animation: marquee 20s linear infinite;
+        }
+        .marquee-content span {
+            font-family: 'Syncopate', sans-serif; font-size: 1.5rem; font-weight: 700;
+            color: transparent; -webkit-text-stroke: 1px var(--border-subtle);
+            margin: 0 40px; letter-spacing: 2px; text-transform: uppercase;
+        }
+        @keyframes marquee {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); } /* Requires duplicate content in HTML to loop smoothly */
         }
 
-        /* --- Main Container --- */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 80px 20px;
+        /* --- Main Layout Container --- */
+        .container { max-width: 1600px; margin: 0 auto; padding: 100px 40px; }
+        
+        .section-header {
+            display: flex; justify-content: space-between; align-items: flex-end;
+            margin-bottom: 60px; border-bottom: 1px solid var(--border-subtle); padding-bottom: 20px;
         }
+        .section-header h2 { font-size: 3rem; margin: 0; color: var(--text-main); }
+        .section-header p { color: var(--accent-primary); font-family: 'Syncopate'; font-size: 0.9rem; margin: 0; }
 
-        .section-title {
-            font-size: 2.5rem;
-            margin-bottom: 50px;
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title::after {
-            content: '';
-            width: 60px;
-            height: 4px;
-            background: var(--accent);
-            display: block;
-            margin: 15px auto 0;
-            border-radius: 2px;
-        }
-
-        /* --- Projects Section --- */
-        .project-section {
-            margin-bottom: 100px;
-        }
-
-        .project-header {
-            margin-bottom: 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-end;
-            border-bottom: 1px solid rgba(255,255,255,0.1);
-            padding-bottom: 15px;
-        }
-
-        .project-header h2 {
-            font-size: 2rem;
-            margin: 0 0 10px 0;
-        }
-
-        .project-header p {
-            color: var(--accent);
-            margin: 0;
-            font-weight: 600;
-            letter-spacing: 1px;
-        }
-
-        /* Sleek Masonry-style Grid */
-        .image-grid {
+        /* --- Bento Box Asymmetrical Grid (Advanced Layout) --- */
+        .bento-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: 300px;
             gap: 20px;
         }
 
-        .img-placeholder {
-            background-color: var(--card-bg);
-            aspect-ratio: 16 / 9;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border: 1px solid rgba(255,255,255,0.05);
-            border-radius: 8px;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative;
-            overflow: hidden;
+        .bento-item {
+            background: var(--bg-surface); border: 1px solid var(--border-subtle);
+            border-radius: 12px; position: relative; overflow: hidden;
+            display: flex; flex-direction: column; justify-content: flex-end; padding: 30px;
+            transition: all 0.5s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
-        .img-placeholder::before {
-            content: '';
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, transparent, rgba(0, 230, 184, 0.1), transparent);
-            transform: translateX(-100%);
-            transition: transform 0.6s;
+        /* Spanning specific items to create the asymmetrical look */
+        .item-large { grid-column: span 2; grid-row: span 2; }
+        .item-wide { grid-column: span 2; grid-row: span 1; }
+
+        .bento-item::before {
+            content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(0deg, rgba(0,0,0,0.9) 0%, transparent 60%);
+            z-index: 1; transition: opacity 0.3s ease; opacity: 0.7;
         }
 
-        .img-placeholder:hover {
-            transform: translateY(-10px) scale(1.02);
-            border-color: var(--accent);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.5), 0 0 20px var(--accent-glow);
-            color: var(--accent);
-            cursor: pointer;
+        .bento-item:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-primary);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
         }
 
-        .img-placeholder:hover::before {
-            transform: translateX(100%);
-        }
+        .bento-item:hover::before { opacity: 0.9; }
 
-        /* --- Contact Section --- */
-        .contact-section {
-            background: linear-gradient(135deg, var(--card-bg), rgba(0,0,0,0.5));
-            padding: 60px;
-            border-radius: 12px;
-            border: 1px solid rgba(255,255,255,0.05);
-            text-align: center;
-        }
+        .bento-content { position: relative; z-index: 2; transform: translateY(20px); transition: transform 0.4s ease; }
+        .bento-item:hover .bento-content { transform: translateY(0); }
 
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 50px;
-            margin-top: 40px;
-            flex-wrap: wrap;
-        }
+        .bento-content h3 { margin: 0 0 10px 0; font-size: 1.5rem; letter-spacing: 1px; }
+        .bento-content p { margin: 0; color: var(--text-muted); font-size: 0.9rem; opacity: 0; transition: opacity 0.4s ease; }
+        .bento-item:hover .bento-content p { opacity: 1; }
 
-        .contact-info div {
-            flex: 1;
-            min-width: 200px;
+        /* Custom Project backgrounds simulating game art */
+        .bg-1 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%231a1a2e"/></svg>') center/cover; }
+        .bg-2 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%2316213e"/></svg>') center/cover; }
+        .bg-3 { background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%230f3460"/></svg>') center/cover; }
+        
+        /* --- Contact Footer --- */
+        .footer-grid {
+            display: grid; grid-template-columns: 1fr 1fr; gap: 60px;
+            margin-top: 150px; padding-top: 80px; border-top: 1px solid var(--border-subtle);
         }
+        .footer-cta h2 { font-size: 4rem; margin: 0 0 20px 0; line-height: 1; }
+        .footer-links { display: flex; gap: 60px; }
+        .link-group { display: flex; flex-direction: column; gap: 15px; }
+        .link-group h4 { color: var(--text-muted); margin: 0 0 10px 0; font-family: 'Syncopate'; font-size: 0.8rem; }
+        .link-group a { color: var(--text-main); font-weight: 500; font-size: 1.1rem; }
+        .link-group a:hover { color: var(--accent-primary); }
 
-        .contact-info h3 {
-            color: var(--accent);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+        /* --- Responsive --- */
+        @media (max-width: 1024px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+            .item-large, .item-wide { grid-column: span 2; }
+            .footer-grid { grid-template-columns: 1fr; }
+            .hero h1 { font-size: 3.5rem; }
         }
-
-        /* --- Footer --- */
-        footer {
-            text-align: center;
-            padding: 40px;
-            background-color: #050505;
-            color: var(--text-muted);
-            font-size: 0.9rem;
-            border-top: 1px solid rgba(255,255,255,0.05);
-        }
-
-        /* --- Responsive Design --- */
         @media (max-width: 768px) {
             nav ul { display: none; }
-            .project-header { flex-direction: column; align-items: flex-start; }
-            .contact-info { gap: 30px; }
+            .section-header { flex-direction: column; align-items: flex-start; gap: 10px; }
+            .bento-grid { grid-template-columns: 1fr; }
+            .item-large, .item-wide { grid-column: span 1; }
         }
     </style>
 </head>
 <body>
 
+    <div class="scanlines"></div>
+
     <header>
-        <div class="logo">Articulate<span>Ape</span></div>
-        <nav>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#projects">Games</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </nav>
+        <div class="header-content">
+            <div class="logo">Ape<span>.</span>Studios</div>
+            <nav>
+                <ul>
+                    <li><a href="#games" class="nav-link">Games</a></li>
+                    <li><a href="#studio" class="nav-link">Studio</a></li>
+                    <li><a href="#careers" class="nav-link">Careers</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
     </header>
 
-    <section class="hero" id="about">
-        <h1>Evolving the Game.</h1>
-        <p>Welcome to Articulate Ape Studios. We craft intelligent, engaging, and breathtaking interactive experiences for the next generation of players.</p>
-        <a href="#projects" class="btn">View Our Games</a>
+    <section class="hero">
+        <h1>EVOLVE<br>THE GAME</h1>
+        <p>Crafting intelligent, brutal, and breathtaking interactive experiences for the next generation of hardware.</p>
+        <button class="cta-btn">View Latest Trailer</button>
     </section>
 
-    <div class="container">
-        <section id="projects">
-            <h2 class="section-title">In Development</h2>
-            
-            <div class="project-section">
-                <div class="project-header">
-                    <h2>Project: NEBULA</h2>
-                    <p>SCI-FI ACTION RPG // Q4 2027</p>
-                </div>
-                <div class="image-grid">
-                    <div class="img-placeholder">Concept Art 1</div>
-                    <div class="img-placeholder">In-Engine Screenshot</div>
-                    <div class="img-placeholder">Character Model</div>
-                    <div class="img-placeholder">Environment 1</div>
-                    <div class="img-placeholder">Environment 2</div>
-                    <div class="img-placeholder">Key Art</div>
-                </div>
-            </div>
-
-            <div class="project-section">
-                <div class="project-header">
-                    <h2>Project: PRIMAL</h2>
-                    <p>SURVIVAL HORROR // TBA</p>
-                </div>
-                <div class="image-grid">
-                    <div class="img-placeholder">Teaser Image</div>
-                    <div class="img-placeholder">Lighting Test</div>
-                    <div class="img-placeholder">Enemy Concept</div>
-                </div>
-            </div>
-        </section>
-
-        <section class="contact-section" id="contact">
-            <h2 class="section-title">Comm Link</h2>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Interested in publishing opportunities, joining the troop, or just want to say hi? Drop us a line.</p>
-            
-            <div class="contact-info">
-                <div>
-                    <h3>Direct Inquiries</h3>
-                    <p><a href="mailto:hello@articulateapestudios.com">hello@articulateapestudios.com</a></p>
-                </div>
-                <div>
-                    <h3>Social Network</h3>
-                    <p>
-                        <a href="#">Twitter/X</a><br>
-                        <a href="#">LinkedIn</a><br>
-                        <a href="#">Discord</a>
-                    </p>
-                </div>
-                <div>
-                    <h3>Base of Operations</h3>
-                    <p>Fully Remote<br>Earth</p>
-                </div>
-            </div>
-        </section>
+    <div class="marquee-container">
+        <div class="marquee-content">
+            <span>Unreal Engine 5</span> • <span>Next-Gen Mechanics</span> • <span>Award-Winning Audio</span> • <span>Narrative Driven</span> • 
+            <span>Unreal Engine 5</span> • <span>Next-Gen Mechanics</span> • <span>Award-Winning Audio</span> • <span>Narrative Driven</span> •
+            <span>Unreal Engine 5</span> • <span>Next-Gen Mechanics</span> • <span>Award-Winning Audio</span> • <span>Narrative Driven</span> •
+        </div>
     </div>
 
-    <footer>
-        &copy; 2026 Articulate Ape Studios. All rights reserved.
-    </footer>
+    <div class="container" id="games">
+        <div class="section-header">
+            <h2>Current Intel</h2>
+            <p>Projects In Active Development</p>
+        </div>
+
+        <div class="bento-grid">
+            <div class="bento-item item-large bg-1">
+                <div class="bento-content">
+                    <h3>Project: NEBULA</h3>
+                    <p>Open-world Sci-Fi RPG. Built on Unreal Engine 5. Targeted for Q4 2027.</p>
+                </div>
+            </div>
+            
+            <div class="bento-item bg-2">
+                <div class="bento-content">
+                    <h3>PRIMAL</h3>
+                    <p>Co-op Survival Horror. Early Alpha.</p>
+                </div>
+            </div>
+
+            <div class="bento-item bg-3">
+                <div class="bento-content">
+                    <h3>Unannounced IP</h3>
+                    <p>Classified. Currently hiring Lead Writers.</p>
+                </div>
+            </div>
+
+            <div class="bento-item item-wide bg-1">
+                <div class="bento-content">
+                    <h3>Proprietary Tech</h3>
+                    <p>Internal physics and fluid simulation engine developed for next-gen consoles.</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-grid" id="contact">
+            <div class="footer-cta">
+                <h2>Ready to<br>Evolve?</h2>
+                <p style="color: var(--text-muted); max-width: 400px; margin-top: 20px;">We are currently seeking senior talent and publishing partners.</p>
+            </div>
+            <div class="footer-links">
+                <div class="link-group">
+                    <h4>Comm Link</h4>
+                    <a href="mailto:hello@articulateape.com">hello@articulateape.com</a>
+                    <a href="mailto:press@articulateape.com">press@articulateape.com</a>
+                    <a href="mailto:jobs@articulateape.com">jobs@articulateape.com</a>
+                </div>
+                <div class="link-group">
+                    <h4>Network</h4>
+                    <a href="#">Twitter / X</a>
+                    <a href="#">LinkedIn</a>
+                    <a href="#">ArtStation</a>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
