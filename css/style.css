@@ -160,8 +160,12 @@
         }
         .marquee-content span {
             font-family: 'Syncopate', sans-serif; font-size: 1.5rem; font-weight: 700;
-            color: transparent; -webkit-text-stroke: 1px var(--border-subtle);
             margin: 0 40px; letter-spacing: 2px; text-transform: uppercase;
+            
+            /* The Brightness Upgrade */
+            color: var(--accent-primary); /* Fills the text with your bright neon green */
+            -webkit-text-stroke: 0px; /* Removes the dull grey outline */
+            text-shadow: 0 0 15px var(--glow-primary); /* Adds a soft neon glow around the letters */
         }
         @keyframes marquee {
             0% { transform: translateX(0); }
