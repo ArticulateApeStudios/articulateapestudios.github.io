@@ -278,13 +278,13 @@
 
 /* --- Team Profile Images --- */
         .profile-img {
-            width: 80px;
-            height: 80px;
+            width: 140px;  /* Bumped up from 80px to fill the space */
+            height: 140px; /* Bumped up from 80px */
             border-radius: 50%;
             object-fit: cover; 
-            margin-bottom: 15px;
-            border: 2px solid var(--accent-primary);
-            box-shadow: 0 0 15px var(--glow-primary);
+            margin-bottom: 25px; /* Added more breathing room below the image */
+            border: 3px solid var(--accent-primary); /* Slightly thicker border for the larger size */
+            box-shadow: 0 0 25px var(--glow-primary); /* Enhanced the neon glow */
             transition: transform 0.3s ease;
         }
         
