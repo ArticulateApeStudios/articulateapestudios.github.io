@@ -275,3 +275,20 @@
             background: var(--accent-secondary);
             opacity: 0.8;
         }
+
+/* --- Team Profile Images --- */
+        .profile-img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover; 
+            margin-bottom: 15px;
+            border: 2px solid var(--accent-primary);
+            box-shadow: 0 0 15px var(--glow-primary);
+            transition: transform 0.3s ease;
+        }
+        
+        /* Makes the image pop slightly when hovering over the card */
+        .bento-item:hover .profile-img {
+            transform: scale(1.1);
+        }
